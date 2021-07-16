@@ -1,0 +1,84 @@
+*,
+*::after,
+*::before {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+:root {
+   --cell-size: 150px;
+   --mark-size: calc(var(--cell-size) * 0.9);
+}
+
+body {
+   background: #1f2235;
+}
+
+.board {
+   width: 100vw;
+   height: 90vh;
+   display: grid;
+   place-content: center;
+   place-items: center;
+   grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+   width: var(--cell-size);
+   height: var(--cell-size);
+   border: 1px solid #f1eff2;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+
+/* DELETE BORDER */
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+   border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+   border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+   border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+   border-bottom: none;
+}
+/* END DELETE BORDER */
+
+.cell.x::before,
+.cell.x::after {
+   content: "";
+   position: absolute;
+   width: calc(var(--mark-size) * 0.05);
+   height: var(--mark-size);
+   background-color: #9d8967;
+}
+
+.cell.x::before {
+   transform: rotate(45deg);
+}
+.cell.x::after {
+   transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after {
+   content: "";
+   position: absolute;
+   width: calc(var(--mark-size) * 0.85);
+   height: calc(var(--mark-size) * 0.85);
+   border: 5px solid #9d8967;
+   border-radius: 50%;
+   fill: transparent;
+}
