@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+
 *,
 *::after,
 *::before {
@@ -7,17 +9,18 @@
 }
 
 :root {
-   --cell-size: 100px;
+   --cell-size: 30vw;
    --mark-size: calc(var(--cell-size) * 0.9);
 }
 
 body {
    background: #1f2235;
+   font-family: "Rubik", sans-serif;
 }
 
 .board {
    width: 100vw;
-   height: 90vh;
+   height: 100vh;
    display: grid;
    place-content: center;
    place-items: center;
@@ -35,7 +38,6 @@ body {
    cursor: pointer;
 }
 
-/* DELETE BORDER */
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3) {
@@ -55,7 +57,6 @@ body {
 .cell:nth-child(7) {
    border-bottom: none;
 }
-/* END DELETE BORDER */
 
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after,
@@ -100,4 +101,45 @@ body {
 .cell.x,
 .cell.circle {
    cursor: not-allowed;
+}
+
+.winning-message {
+   display: none;
+   position: fixed;
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   background-color: #4f6566cc;
+}
+
+.winning-message h1 {
+   color: #f1eff2;
+}
+
+.winning-message button {
+   font-size: 2rem;
+   padding: 0.25em 0.5em;
+   border: 2px solid black;
+   border-radius: 0.25em;
+   transition: 0.75s;
+}
+
+.winning-message button:hover {
+   background: black;
+   border-color: white;
+   color: white;
+}
+
+.winning-message.show {
+   display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+   :root {
+      --cell-size: 25vh;
+   }
 }
