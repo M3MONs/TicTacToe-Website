@@ -114,10 +114,8 @@ body {
    align-items: center;
    flex-direction: column;
    background-color: #4f6566cc;
-}
-
-.winning-message h1 {
    color: #f1eff2;
+   font-size: 3rem;
 }
 
 .winning-message button {
@@ -126,6 +124,7 @@ body {
    border: 2px solid black;
    border-radius: 0.25em;
    transition: 0.75s;
+   cursor: pointer;
 }
 
 .winning-message button:hover {
